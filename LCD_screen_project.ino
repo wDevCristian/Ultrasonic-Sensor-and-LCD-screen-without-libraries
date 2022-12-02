@@ -47,7 +47,7 @@ void loop()
   delay(1);
 }
 
-// --- Function for Ultrasonic Sensor
+// --- Functions for Ultrasonic Sensor
 int getDistance(){
   digitalWrite(TRIG, LOW); 
   delayMicroseconds(2); 
@@ -69,6 +69,7 @@ int getCorrectedDistance() {
   byte dist[3]; 
   byte i;
 
+  // Exponential moving average filter + median filter
   for( i = 0; i < 2; i++) {
     dist[0] = (byte)(getDistance());
     delay(17);
